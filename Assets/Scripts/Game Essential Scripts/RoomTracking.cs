@@ -5,15 +5,18 @@ using UnityEngine;
 public class RoomTracking : MonoBehaviour
 {
     private GameObject lookHere;
-    // Start is called before the first frame update
     void Start()
     {
         lookHere = GameObject.FindGameObjectWithTag("TrackMe");
+        transform.LookAt(lookHere.transform);
     }
 
-    // Update is called once per frame
     void Update()
     {
+        if(lookHere == null)
+        {
+        lookHere = GameObject.FindGameObjectWithTag("TrackMe");
         transform.LookAt(lookHere.transform);
+        }
     }
 }

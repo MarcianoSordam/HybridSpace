@@ -58,7 +58,6 @@ public class ScanClue : MonoBehaviour
                     }
                     if (Input.GetMouseButton(0))
                     {
-                        if(!tempClue.GetSolved)
                             tempClue.Scanning();
                     }
                 }
