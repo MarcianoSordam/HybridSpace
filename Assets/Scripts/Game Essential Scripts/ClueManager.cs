@@ -5,7 +5,6 @@ using TMPro;
 
 public class ClueManager : MonoBehaviour
 {
-    private GameObject clueScreen;
     public TextMeshProUGUI title;
     public TextMeshProUGUI description;
     public Animator anim;
@@ -13,7 +12,6 @@ public class ClueManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        clueScreen.SetActive(false);
         anim = GetComponent<Animator>();
     }
 

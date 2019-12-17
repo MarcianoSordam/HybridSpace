@@ -8,6 +8,7 @@ public class RayCasting : MonoBehaviour
     public Animator animator;
     bool screenup = false;
 
+    private Clue tempClue;
     private void Start()
     {
         UIScript = GetComponent<OpenUI>();
@@ -17,20 +18,31 @@ public class RayCasting : MonoBehaviour
     {
         RaycastHit hit;
         // Does the ray intersect any objects excluding the player layer
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity)) // mathf.infinity weghalen en vervangen door gewenste afstand/lengte
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+            //UIScript.OpenUp(hit.collider.gameObject.name);
+            //animator.SetBool("Found", true);
+            if(tempClue != null)
+            {
+                if(tempClue.transform != hit.transform)
+                {
+                    tempClue = hit.transform.GetComponent<Clue>();
+                }
 
-            UIScript.OpenUp(hit.collider.gameObject.name);
-
-            animator.SetBool("Found", true);
+                tempClue.Scanning();
+            }
+            else
+            {
+                tempClue = hit.transform.GetComponent<Clue>();
+            }
         }
         else
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
 
             ObjectName.text = "Scanning";
-            UIScript.OpenUp("None");
+           // UIScript.OpenUp("None");
             animator.SetBool("Found", false);
             animator.SetBool("Info", false);
             screenup = false;
