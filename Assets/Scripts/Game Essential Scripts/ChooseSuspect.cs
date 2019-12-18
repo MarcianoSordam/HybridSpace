@@ -25,12 +25,20 @@ public class ChooseSuspect : MonoBehaviour
         if(_suspect == theSuspect)
         {
             // hier is de juiste
+<<<<<<< HEAD
             Debug.Log("TRUE");
+=======
+            Debug.Log("Correct Suspect");
+>>>>>>> 188b82a7c18ebe8b5284dffdcb1e8d700b4098ac
         }
         else
         {
             // hier is de onjuiste
+<<<<<<< HEAD
             Debug.LogError("False");
+=======
+            Debug.LogError("Wrong Suspect");
+>>>>>>> 188b82a7c18ebe8b5284dffdcb1e8d700b4098ac
         }
     }
 
